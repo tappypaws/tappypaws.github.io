@@ -1,120 +1,121 @@
 /* Index Page*/
 h1 {
-    font-family:"Micro 5", sans-serif;
-    font-weight:800;
-    font-size:90px;
-    font-style:normal;
-    text-decoration:none;
-    color:white;
+  font-family:"Micro 5", sans-serif;
+  font-weight:800;
+  font-size:5.58rem;
+  font-style:normal;
+  text-decoration:none;
+  color:white;
 }
 h2 {
-    font-family:"Micro 5", sans-serif;
-    font-weight:400;
-    font-size:50px;
-    font-style:normal;
-    text-decoration:none;
-    color:white;
-    margin-top:40px;
+  font-family:"Micro 5", sans-serif;
+  font-weight:400;
+  font-size:3em;
+  font-style:normal;
+  text-decoration:none;
+  color:white;
+  margin-top:40px;
 }
 body {
-    background:rgb(177, 238, 255);
-    transition:0.3s ease-in;
-    cursor:url(/images/cursor.png), auto;
+  background:rgb(177, 238, 255);
+  transition:0.3s ease-in;
+  cursor:url(/images/cursor.png), auto;
 }
 
 #container {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100%;
-    margin-left:7%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
+  margin-left:7%;
 }
 #box {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    width:350vw;
-    height:70vh;
-    max-width:520px;
-    max-height:520px;
-    border-radius:25px;
-    border:20px solid beige;
-    padding:50px;
-    background-image:url(images/skyBackground.avif);
-    background-repeat:round;
-    transition:0.3s ease-in;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  max-width:30rem;
+  max-height:24rem;
+  border-radius:25px;
+  border:20px solid beige;
+  padding:50px;
+  background-image:url(images/skyBackground.avif);
+  background-repeat:round;
+  transition:0.3s ease-in;
 }
 
 .topPage {
-    margin-top: 12px;
+  margin-top:10%;
+}
+.bottomPage {
+  margin-bottom:10%;
 }
 
 #startButton{
-    margin-top:170px;
-    position:absolute;
-    cursor:url(/images/pointer.png), auto;
+  margin-top:170px;
+  position:absolute;
+  cursor:url(/images/pointer.png), auto;
 }
 
 .dogGif {
-    display:block;
-    margin:-140px auto 0;
-    float:right;
-    position:relative;
-    right:10px;
-    width:300px;
-    image-rendering:pixelated;
-    animation-name:dogGifAnimation;
-    animation-duration:4.5s;
-    animation-iteration-count:100;
+  display:block;
+  margin:-140px auto 0;
+  float:right;
+  position:relative;
+  right:10px;
+  width:300px;
+  image-rendering:pixelated;
+  animation-name:dogGifAnimation;
+  animation-duration:4.5s;
+  animation-iteration-count:100;
 } 
 @keyframes dogGifAnimation {
-    from {
-        transform:rotateX(0deg);
-    }
-    to {
-        transform:rotateY(360deg);
-    }
+  from {
+    transform:rotateX(0deg);
+  }
+  to {
+    transform:rotateY(360deg);
+  }
 }
 
 .buttonsPosition {
-    margin-top: 0; 
-    gap: 25px;
-    padding: 1rem;
+  margin-top: 0; 
+  gap: 25px;
+  padding: 1rem;
 }
 .volumeButtons:hover {
-    background-color:beige;
-    cursor:url(/images/pointer.png), auto;
+  background-color:beige;
+  cursor:url(/images/pointer.png), auto;
 }
 #reviewButton {
-    background-color:gold;
-    border-radius: 20px;
-    border:2px solid black;
-    font-family:"Micro 5", sans-serif;
-    font-weight:20;
-    font-size:25px;
-    font-style:normal;
-    text-decoration:none;
-    color:black;
-    cursor:url(/images/pointer.png), auto;
-    &:hover {
-        background-color:beige;
-    }
+  background-color:gold;
+  border-radius: 20px;
+  border:2px solid black;
+  font-family:"Micro 5", sans-serif;
+  font-weight:20;
+  font-size:25px;
+  font-style:normal;
+  text-decoration:none;
+  color:black;
+  cursor:url(/images/pointer.png), auto;
+  &:hover {
+    background-color:beige;
+  }
 }
 #creditsButton {
-    background-color:gold;
-    border-radius: 20px;
-    border:2px solid black;
-    font-family:"Micro 5", sans-serif;
-    font-weight:20;
-    font-size:25px;
-    font-style:normal;
-    text-decoration:none;
-    color:black;
-    cursor:url(/images/pointer.png), auto;
-    &:hover {
-        background-color:beige;
-    }
+  background-color:gold;
+  border-radius: 20px;
+  border:2px solid black;
+  font-family:"Micro 5", sans-serif;
+  font-weight:20;
+  font-size:25px;
+  font-style:normal;
+  text-decoration:none;
+  color:black;
+  cursor:url(/images/pointer.png), auto;
+  &:hover {
+    background-color:beige;
+  }
 }
 
 label {
@@ -186,20 +187,20 @@ body.darkTheme {
   transition:0.3s ease-in;
 }
 #box.darkTheme {
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    width:350vw;
-    height:70vh;
-    max-width:520px;
-    max-height:520px;
-    border-radius:25px;
-    border:20px solid #1e042a;
-    padding:50px;
-    background-image:url(images/nightSkyBackground.png);
-    background-repeat:round;
-    transition:0.3s ease-in;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width:350vw;
+  height:70vh;
+  max-width:520px;
+  max-height:520px;
+  border-radius:25px;
+  border:20px solid #1e042a;
+  padding:50px;
+  background-image:url(images/nightSkyBackground.png);
+  background-repeat:round;
+  transition:0.3s ease-in;
 }
 
 #clickyClawsButton {
@@ -243,24 +244,24 @@ body.darkTheme {
   cursor:url(/images/pointer.png), auto;
 }
 #container {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100%;
 }
 #gameBox {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:rgb(118, 178, 231);
-    border-radius:25px;
-    border:20px solid beige;
-    padding:31vh;
-    transition:0.3s ease-in;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:rgb(118, 178, 231);
+  border-radius:25px;
+  border:20px solid beige;
+  padding:31vh;
+  transition:0.3s ease-in;
 }
 .gameButtonsPosition {
   position:absolute;
-  bottom:10%;
+  bottom:15%;
   right:4%;
 }
 
@@ -389,60 +390,12 @@ body.darkTheme {
 }
 
 #gameBox.darkTheme {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background-color:#434676; 
-    border-radius:25px;
-    border:20px solid #1e042a;
-    padding:31vh;
-    transition:0.3s ease-in;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background-color:#434676; 
+  border-radius:25px;
+  border:20px solid #1e042a;
+  padding:31vh;
+  transition:0.3s ease-in;
 }
-
-
-
-/*Mobile*/
-
-
-/* @media (max-width: 600px) {
-  label {
-    width: 180px;
-    height: 70px;
-    border-radius: 70px;
-  }
-
-  label:after {
-    width: 60px;
-    height: 60px;
-    top: 5px;
-    left: 5px;
-    border-radius: 60px;
-  }
-
-  input:checked + label:after {
-    left: 175px;
-  }
-
-  label:active:after {
-    width: 90px;
-  }
-
-  label svg {
-    width: 40px;
-    top: 15px;
-  }
-
-  label svg.sun {
-    left: 15px;
-  }
-
-  label svg.moon {
-    left: 125px;
-  }
-} */
-
-/* @media (max-width:700px) and (orientation:portrait) {
-    body {
-        width:100%;
-    }
-} */
