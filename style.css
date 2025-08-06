@@ -191,10 +191,8 @@ body.darkTheme {
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  width:350vw;
-  height:70vh;
-  max-width:520px;
-  max-height:520px;
+  max-width:30rem;
+  max-height:24rem;
   border-radius:25px;
   border:20px solid #1e042a;
   padding:50px;
