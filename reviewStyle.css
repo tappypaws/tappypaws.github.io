@@ -12,7 +12,9 @@ p {
 body {
     font-family:"Micro 5", sans-serif;
     background-image:url(/images/reviewSkyBackground.jpg);
-    background-repeat:round;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center center;
     margin:0;
     display:flex;
     justify-content:center;
