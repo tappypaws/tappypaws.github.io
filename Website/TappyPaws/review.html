@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tappy Paws</title>
+    <link rel="stylesheet" href="./reviewStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Sound Effect -->
+    <div class="buttonSoundEffect">
+        <audio id="soundEffect" src="audio/Click.MP3"></audio>
+    </div>
+	<div class="container">
+		<!-- Index Page -->
+        <a id="title" data-role="button" data-inline="true" href="index.html" data-rel="back" onclick="buttonSoundEffect()">Tappy Paws</a>
+		<h1>Reviews</h1>
+        <p>Write a review or check out some reviews below!</p>
+		<!-- Rating -->
+		<div class="rating">
+			<span id="rating">0</span>/5
+		</div>
+		<div class="stars" id="stars">
+			<span class="star" data-value="1" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="2" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="3" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="4" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="5" onclick="buttonSoundEffect()">★</span>
+		</div>
+		<!-- Name -->
+        <p>Your Name:</p>
+        <input type="text" id="username" placeholder="Anonymous" />
+		<!-- Review -->
+        <p>Share your review:</p>
+		<textarea id="review"
+			placeholder="Write your review here">
+		</textarea>
+		<!-- Submit Button -->
+		<button id="submit" onclick="buttonSoundEffect()">Submit</button>
+		<div class="reviews" id="reviews">
+		</div>
+	</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+	apiKey: "AIzaSyDURTHdjnNhAbsSiQP4c-yYguWN0t2FLtg",
+  	authDomain: "tappypaws-5d45f.firebaseapp.com",
+  	databaseURL: "https://tappypaws-5d45f-default-rtdb.firebaseio.com",
+  	projectId: "tappypaws-5d45f",
+  	storageBucket: "tappypaws-5d45f.firebasestorage.app",
+  	messagingSenderId: "59081070954",
+  	appId: "1:59081070954:web:19edc34234d87e88faad13",
+  	measurementId: "G-J7DPDPS5NT"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener("DOMContentLoaded", () => {
+  	let selectedRating = 0;
+	const stars = document.querySelectorAll(".star");
+  	const ratingEl = document.getElementById("rating");
+  	const reviewText = document.getElementById("review");
+  	const submitBtn = document.getElementById("submit");
+  	const reviewsContainer = document.getElementById("reviews");
+ 	const usernameEl = document.getElementById("username");
+  	const soundEffect = document.getElementById("soundEffect");
+
+function buttonSoundEffect() {
+	soundEffect.currentTime = 0;
+    soundEffect.play();
+}
+
+stars.forEach((star) => {
+	star.addEventListener("click", () => {
+    	buttonSoundEffect();
+      	selectedRating = parseInt(star.getAttribute("data-value"));
+      	ratingEl.innerText = selectedRating;
+
+      	stars.forEach((s, i) => {
+        	s.classList.remove("one", "two", "three", "four", "five");
+        	if (i < selectedRating) {
+          		s.classList.add(getStarColorClass(selectedRating));
+        	}
+      	});
+    });
+});
+
+submitBtn.addEventListener("click", async () => {
+    const username = usernameEl.value.trim() || "Anonymous";
+    const review = reviewText.value.trim();
+
+	buttonSoundEffect();
+
+    if (!review || selectedRating === 0) {
+    	alert("Please give a rating and write a review.");
+      	return;
+    }
+
+    await addDoc(collection(db, "reviews"), {
+      	username,
+      	review,
+      	rating: selectedRating,
+      	timestamp: Date.now()
+    });
+
+    usernameEl.value = "";
+    reviewText.value = "";
+    ratingEl.innerText = "0";
+    selectedRating = 0;
+    stars.forEach((s) => s.className = "star");
+});
+
+const q = query(collection(db, "reviews"), orderBy("timestamp", "desc"));
+  	onSnapshot(q, (snapshot) => {
+    	reviewsContainer.innerHTML = "";
+    	snapshot.forEach((doc) => {
+      	displayReview(doc.data());
+    });
+});
+
+function displayReview({ username, review, rating }) {
+	const newReview = document.createElement("div");
+    newReview.className = "review";
+    newReview.innerHTML = `<strong>${username}</strong> rated it <strong>${rating}/5</strong><br><p>${review}</p>`;
+    reviewsContainer.appendChild(newReview);
+}
+function getStarColorClass(value) {
+    switch (value) {
+      case 1: 
+	  	return "one";
+      case 2: 
+	  	return "two";
+      case 3: 
+	  	return "three";
+      case 4: 
+	  	return "four";
+      case 5: 
+	  	return "five";
+      default: 
+	  	return "";
+    }
+  }
+});
+</script>
+<script src="review.js"></script>
+
+<!-- Delete Comments -->
+<!-- <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+	apiKey: "AIzaSyDURTHdjnNhAbsSiQP4c-yYguWN0t2FLtg",
+  	authDomain: "tappypaws-5d45f.firebaseapp.com",
+  	databaseURL: "https://tappypaws-5d45f-default-rtdb.firebaseio.com",
+  	projectId: "tappypaws-5d45f",
+  	storageBucket: "tappypaws-5d45f.firebasestorage.app",
+  	messagingSenderId: "59081070954",
+  	appId: "1:59081070954:web:19edc34234d87e88faad13",
+  	measurementId: "G-J7DPDPS5NT"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener("DOMContentLoaded", () => {
+	let selectedRating = 0;  
+	const stars = document.querySelectorAll(".star");
+  	const ratingEl = document.getElementById("rating");
+  	const reviewText = document.getElementById("review");
+  	const submitBtn = document.getElementById("submit");
+  	const reviewsContainer = document.getElementById("reviews");
+  	const usernameEl = document.getElementById("username");
+  	const soundEffect = document.getElementById("soundEffect");
+
+
+function buttonSoundEffect() {
+    soundEffect.currentTime = 0;
+    soundEffect.play();
+}
+
+stars.forEach((star) => {
+	star.addEventListener("click", () => {
+    	buttonSoundEffect();
+    	selectedRating = parseInt(star.getAttribute("data-value"));
+    	ratingEl.innerText = selectedRating;
+
+    	stars.forEach((s, i) => {
+    	s.classList.remove("one", "two", "three", "four", "five");
+    	if (i < selectedRating) {
+    		s.classList.add(getStarColorClass(selectedRating));
+        }
+      });
+    });
+  });
+
+submitBtn.addEventListener("click", async () => {
+    	buttonSoundEffect();
+    	const username = usernameEl.value.trim() || "Anonymous";
+    	const review = reviewText.value.trim();
+
+    	if (!review || selectedRating === 0) {
+      		alert("Please give a rating and write a review.");
+      	return;
+    	}
+
+    	await addDoc(collection(db, "reviews"), {
+      		username,
+      		review,
+      		rating: selectedRating,
+      		timestamp: Date.now()
+    	});
+
+    usernameEl.value = "";
+    reviewText.value = "";
+    ratingEl.innerText = "0";
+    selectedRating = 0;
+    stars.forEach((s) => s.className = "star");
+  });
+
+const q = query(collection(db, "reviews"), orderBy("timestamp", "desc"));
+  	onSnapshot(q, (snapshot) => {
+		reviewsContainer.innerHTML = "";
+    	snapshot.forEach((docSnap) => {
+    		displayReview(docSnap.data(), docSnap.id);
+    	});
+});
+
+function displayReview({ username, review, rating }, id) {
+    const newReview = document.createElement("div");
+    newReview.className = "review";
+
+    newReview.innerHTML = `
+      <strong>${username}</strong> rated it <strong>${rating}/5</strong><br>
+      <p>${review}</p>
+      <button class="delete-btn" data-id="${id}">Delete</button>
+    `;
+
+    reviewsContainer.appendChild(newReview);
+
+	newReview.querySelector(".delete-btn").addEventListener("click", async () => {
+      	if (confirm("Are you sure you want to delete this review?")) {
+     		try {
+          		await deleteDoc(doc(db, "reviews", id));
+        	} catch (error) {
+          		alert("Failed to delete review: " + error.message);
+        	}
+      	}	
+	});
+}
+
+function getStarColorClass(value) {
+    switch (value) {
+      case 1: 
+	  	return "one";
+      case 2: 
+	  	return "two";
+      case 3: 
+	  	return "three";
+      case 4: 
+	  	return "four";
+      case 5: 
+	  	return "five";
+      default: 
+	  	return "";
+    }
+  }
+});
+
+</script> -->
+</body>
+
+</html>
