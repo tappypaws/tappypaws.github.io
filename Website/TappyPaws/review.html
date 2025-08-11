@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tappy Paws</title>
+    <link rel="stylesheet" href="./reviewStyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Sound Effect -->
+    <div class="buttonSoundEffect">
+        <audio id="soundEffect" src="audio/Click.MP3"></audio>
+    </div>
+	<div class="container">
+		<!-- Index Page -->
+        <a id="title" data-role="button" data-inline="true" href="index.html" data-rel="back" onclick="buttonSoundEffect()">Tappy Paws</a>
+		<h1>Reviews</h1>
+        <p>Write a review or check out some reviews below!</p>
+		<!-- Rating -->
+		<div class="rating">
+			<span id="rating">0</span>/5
+		</div>
+		<div class="stars" id="stars">
+			<span class="star" data-value="1" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="2" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="3" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="4" onclick="buttonSoundEffect()">★</span>
+			<span class="star" data-value="5" onclick="buttonSoundEffect()">★</span>
+		</div>
+		<!-- Name -->
+        <p>Your Name:</p>
+        <input type="text" id="username" placeholder="Anonymous" />
+		<!-- Review -->
+        <p>Share your review:</p>
+		<textarea id="review"
+			placeholder="Write your review here">
+		</textarea>
+		<!-- Submit Button -->
+		<button id="submit" onclick="buttonSoundEffect()">Submit</button>
+		<div class="reviews" id="reviews">
+		</div>
+	</div>
+	
+	<script src="review.js"></script>
+</body>
+
+</html>
