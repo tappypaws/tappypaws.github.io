@@ -165,7 +165,7 @@ function spawnMouse() {
             confetti({
                 particleCount: 1000,
                 spread: 300,
-                origin: { x: 0.8, y: 0.4 }
+                origin: { x: 0.7, y: 0.4 }
             });
         }
         else if ((store < evolutionStage) && (evolutionStage > 1)) {
@@ -189,7 +189,7 @@ function spawnMouse() {
             confetti({
                 particleCount: 150,
                 spread: 90,
-                origin: { x: 0.8, y: 0.6 }
+                origin: { x: 0.7, y: 0.5 }
             });
         }
         else {
