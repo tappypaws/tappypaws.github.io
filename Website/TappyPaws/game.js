@@ -127,7 +127,7 @@ function eatDog() {
     dog.classList.remove("evolve");
 
     const interval = setInterval(() => {
-        dog.src = `images/HotDogEat${frame}.png`;
+        dog.src = `./images/HotDogEat${frame}.PNG`;
         frame++;
 
         if (frame > 24) {
