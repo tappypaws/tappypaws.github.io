@@ -32,6 +32,7 @@ function volumeDown() {
 /*Theme Button*/
 const themeButton = document.getElementById("darkMode");
 const gameBox = document.getElementById("gameBox");
+
 if (themeButton) {
     themeButton.addEventListener("click", function () {
         document.body.classList.toggle("darkTheme");
@@ -45,6 +46,7 @@ let totalWordsTyped = 0;
 let wordsTyped = 0;      
 let level = 5;
 let evolutionStage = 1;
+let frame = 1;
 const maxStage = 10;
 const stageMessages = {
     2: "The dog is starting to grow!",
@@ -117,6 +119,23 @@ function showVictory() {
         victoryDisplay.classList.remove("revealVictory");
     }, 600);
 }
+function eatDog() {
+    const eatButton = document.getElementById("eatButton");
+
+    eatButton.classList.add("hidden");
+
+    dog.classList.remove("evolve");
+
+    const interval = setInterval(() => {
+        dog.src = `./images/HotDogEat${frame}.png`;
+        frame++;
+
+        if (frame > 24) {
+            clearInterval(interval);
+            dog.classList.add("hidden");
+        }
+    }, 500);    
+}
 function updateProgressBar() {
     const totalWordsForEvolution = 225;
     const progress = (totalWordsTyped / totalWordsForEvolution) * 100;
@@ -147,6 +166,10 @@ document.addEventListener("keydown", (e) => {
                 }
                 if (evolutionStage === maxStage) {
                     const message = stageMessages[evolutionStage] || `Stage ${evolutionStage}`;
+
+                    if (frame <= 24) {
+                        document.getElementById("eatButton").classList.remove("hidden");
+                    }  
 
                     showVictory();
                     
