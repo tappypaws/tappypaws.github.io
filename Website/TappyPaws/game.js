@@ -44,7 +44,7 @@ let currentWord = "";
 let typedIndex = 0;
 let totalWordsTyped = 0; 
 let wordsTyped = 0;      
-let level = 5;
+let level = 2;
 let evolutionStage = 1;
 let frame = 1;
 const maxStage = 10;
@@ -127,7 +127,7 @@ function eatDog() {
     dog.classList.remove("evolve");
 
     const interval = setInterval(() => {
-        dog.src = `./images/HotDogEat${frame}.png`;
+        dog.src = `images/HotDogEat${frame}.png`;
         frame++;
 
         if (frame > 24) {
@@ -157,7 +157,7 @@ document.addEventListener("keydown", (e) => {
                 updateProgressBar();
                 if(wordsTyped === level) {
                     wordsTyped = 0;
-                    level += 5;
+                    // level += 5;
                     evolutionStage++;
                     updateProgressBar();
                     if (evolutionStage > maxStage) {
@@ -254,8 +254,3 @@ document.addEventListener("keydown", (e) => {
 
 updateProgressBar();
 startNewWord();
-
-
-
-
-
