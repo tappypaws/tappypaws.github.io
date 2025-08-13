@@ -258,9 +258,13 @@ body.darkTheme {
 }
 
 .word {
-  font-family:"Micro 5", sans-serif;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:130px;
+  /* font-family:"Micro 5", sans-serif;
   font-weight:400;
-  font-size:150px;
+  font-size:150px; */
   font-style:normal;
   color:white;
 }
@@ -273,7 +277,7 @@ body.darkTheme {
 
 .stageMessage {
   position:absolute;
-  top:10%;
+  top:15%;
   right:5%;
   font-size:2em;
   font-family:"Micro 5", sans-serif;
@@ -423,6 +427,25 @@ body.darkTheme {
   width:0%;
   background-color:gold;
   transition:width 0.5s ease-in-out;
+}
+
+#eatButton {
+  position:absolute;
+  top:10%;
+  right:5%;
+  background-color:rgb(255, 0, 0);
+  border-radius: 20px;
+  border:2px solid black;
+  font-family:"Micro 5", sans-serif;
+  font-weight:20;
+  font-size:25px;
+  font-style:normal;
+  text-decoration:none;
+  color:black;
+  cursor:url(images/pointer.png), auto;
+  &:hover {
+    background-color:beige;
+  }
 }
 
 #gameBox.darkTheme {
