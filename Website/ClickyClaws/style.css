@@ -431,6 +431,25 @@ body.darkTheme {
   transition:width 0.5s ease-in-out;
 }
 
+#eatButton {
+  position:absolute;
+  top:18%;
+  right:2%;
+  background-color:rgb(255, 0, 0);
+  border-radius: 20px;
+  border:2px solid black;
+  font-family:"Micro 5", sans-serif;
+  font-weight:20;
+  font-size:25px;
+  font-style:normal;
+  text-decoration:none;
+  color:black;
+  cursor:url(images/pointer.png), auto;
+  &:hover {
+    background-color:beige;
+  }
+}
+
 .spark {
   position:absolute;
   width:40px;
