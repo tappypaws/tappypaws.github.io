@@ -76,6 +76,7 @@ let clicks = 0;
 let totalClicks = 0;
 let level = 9;
 let evolutionStage = 1;
+let frame = 1;
 const maxStage = 10;
 const stageMessages = {
     2: "Nice catch!",
@@ -113,6 +114,23 @@ function showVictory() {
         victoryDisplay.classList.remove("revealVictory");
     }, 600);
 }
+function eatCat() {
+    const eatButton = document.getElementById("eatButton");
+
+    eatButton.classList.add("hidden");
+
+    cat.classList.remove("evolve");
+
+    const interval = setInterval(() => {
+        cat.src = `./images/HamburgerCatEat${frame}.png`;
+        frame++;
+
+        if (frame > 44) {
+            clearInterval(interval);
+            cat.classList.add("hidden");
+        }
+    }, 500);
+}
 function updateProgressBar() {
     const totalClicksForEvolution = 450;
     const progress = (totalClicks / totalClicksForEvolution) * 100;
@@ -143,6 +161,10 @@ function spawnMouse() {
         }
         if (evolutionStage === maxStage) {
             const message = stageMessages[evolutionStage] || `Stage ${evolutionStage}`;
+
+            if (frame <= 44) {
+                document.getElementById("eatButton").classList.remove("hidden");
+            }
 
             showVictory();
 
