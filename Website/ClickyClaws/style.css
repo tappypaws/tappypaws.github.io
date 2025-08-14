@@ -432,9 +432,6 @@ body.darkTheme {
 }
 
 #eatButton {
-  position:absolute;
-  top:18%;
-  right:2%;
   background-color:rgb(255, 0, 0);
   border-radius: 20px;
   border:2px solid black;
