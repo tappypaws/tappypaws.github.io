@@ -74,7 +74,7 @@ if (themeButton) {
 /*Game*/
 let clicks = 0;
 let totalClicks = 0;
-let level = 9;
+let level = 10;
 let evolutionStage = 1;
 let frame = 1;
 const maxStage = 10;
